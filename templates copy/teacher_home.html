@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Link to Bootstrap CSS for styling -->
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="card-title text-center">Welcome, {{ teacher.first_name }}!</h1>
+                        <p class="text-center">This is your Teacher Home Page.</p>
+                        <div class="text-center">
+                            <a href="{% url 'teacher_profile' %}" class="btn btn-primary">View Profile</a>
+                            <a href="{% url 'teacher_edit_profile' %}" class="btn btn-info">Edit Profile</a>
+                            <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+                        </div>
+
+                        <hr>
+
+                        <h3 class="text-center">Inspiring the Future</h3>
+                        <p class="text-center">
+                            As an educator, you have the power to inspire and shape the future. Your dedication and passion for teaching can make a significant impact on your students' lives, helping them reach their full potential.
+                        </p>
+
+                        <h3 class="text-center">Empowering Minds</h3>
+                        <p class="text-center">
+                            Teaching is not just a profession; it's a calling to empower young minds with knowledge, critical thinking, and problem-solving skills. Your guidance can ignite a lifelong love for learning.
+                        </p>
+
+                        <h3 class="text-center">Creating Tomorrow's Leaders</h3>
+                        <p class="text-center">
+                            Through your teaching, you are nurturing the leaders of tomorrow. Your mentorship and guidance can help students become confident, compassionate, and visionary individuals.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ... (scripts and closing tags) ... -->
+</body>
+</html>

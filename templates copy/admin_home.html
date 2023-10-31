@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Home</title>
+
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Admin Panel</h1>
+        <p>Manage college courses, teachers, and students here.</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="{% url 'add_course' %}">Add Course</a></li>
+            <li><a href="{% url 'add_student' %}">Add Student</a></li>
+            <li><a href="{% url 'teacher_view' %}">View Teachers</a></li>
+            <li><a href="{% url 'view_student' %}">View Students</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section class="courses-section">
+            <h2>College Courses</h2>
+            <ul>
+                {% for course in courses %}
+                <li>{{ course.course_name }} (Teacher: {{ course.teacher.first_name }} {{ course.teacher.last_name }})</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section class="upcoming-events">
+            <h2>Upcoming Events</h2>
+            <ul>
+                <li>Faculty Meeting - October 15th, 2023</li>
+                <li>Parent-Teacher Conferences - November 5th, 2023</li>
+            </ul>
+        </section>
+
+        <section class="quick-actions">
+            <h2>Quick Actions</h2>
+            <ul>
+                <li><a href="{% url 'edit_teacher' 1 %}">Edit Teacher Profile</a></li>
+                <li><a href="{% url 'add_course' %}">Add a New Course</a></li>
+                <li><a href="{% url 'add_student' %}">Add a New Student</a></li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <a href="{% url 'logout' %}">Logout</a>
+    </footer>
+</body>
+</html>

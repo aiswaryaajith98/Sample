@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Students</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <!-- Link to your custom CSS file for styling -->
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="title">View Students</h1>
+        </header>
+        <main>
+            <table class="student-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Age</th>
+                        <th>Course</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                    <tr>
+                        <td>{{ student.id }}</td>
+                        <td>{{ student.first_name }}</td>
+                        <td>{{ student.last_name }}</td>
+                        <td>{{ student.age }}</td>
+                        <td>{{ student.course.course_name }}</td>
+                        <td>
+                            <a class="btn btn-primary" href="{% url 'edit_student' student.id %}">Edit</a>
+                            <a class="btn btn-danger" href="{% url 'delete_student' student.id %}">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </main>
+        <footer>
+            <a class="btn btn-secondary" href="{% url 'admin_home' %}">Back to Admin Home</a>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!-- college_app/templates/teacher_view.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher View</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Link to Bootstrap CSS for styling -->
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            {% for teacher in teachers %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="{{ teacher.profile_image.url }}" class="card-img-top" alt="{{ teacher.first_name }} {{ teacher.last_name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ teacher.first_name }} {{ teacher.last_name }}</h5>
+                        <p class="card-text">Age: {{ teacher.age }}</p>
+                        <p class="card-text">Address: {{ teacher.address }}</p>
+                        <p class="card-text">Qualification: {{ teacher.qualification }}</p>
+                        <p class="card-text">Teaching Course: {{ teacher.teaching_course }}</p>
+                        <p class="card-text">Username: {{ teacher.username }}</p>
+                        <p class="card-text">Email: {{ teacher.email }}</p>
+                        <p class="card-text">Phone Number: {{ teacher.phone }}</p>
+                        <a href="{% url 'admin_view_teacher' teacher.id %}" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-md-12 text-center">
+                <p>No teachers available</p>
+            </div>
+            {% endfor %}
+        </div>
+        <a href="{% url 'admin_home' %}" class="btn btn-primary btn-block mt-4">Back to Admin Home</a>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
